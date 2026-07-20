@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wish</title>
+</head>
+<body>
+    <div id="wishlist">
+        <h1>your Cart</h1>
+    </div>
+</body>
+</html>
+<script>
+const savedItems =
+JSON.parse(localStorage.getItem("savedItems")) || [];
+
+console.log(savedItems);
+const container = document.getElementById("wishlist");
+
+savedItems.forEach(item => {
+
+    container.innerHTML += `
+
+    <div class="card">
+
+        <img src="${item.image}">
+
+        <h3>${item.title}</h3>
+
+        <p>${item.description}</p>
+
+        <h4>${item.price}</h4>
+
+        <p>⭐ ${item.rating}</p>
+
+    </div>
+
+    `;
+
+});
+</script>
