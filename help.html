@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help</title>
+</head>
+<style>
+    header{
+        position: fixed;
+        top: 0;
+        margin-top: 0;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+    header a{
+        text-decoration: none;
+        justify-content: center;
+        padding: 100px;
+        text-align: center;
+    }
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background: rgb(139, 202, 241);
+        margin: 0;
+        padding: 40px;
+    }
+    .container {
+        max-width: 900;
+        margin: auto;
+        background: rgb(113, 167, 176);
+        padding: 100px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    h2{
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+    }
+    h3 {
+        margin-top: 25px;
+        font-size: 24px;
+    }
+    p{
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 15px;
+    }
+    ul{
+        padding-left: 20px;
+    }
+    li{
+        margin-bottom: 10px;
+        font-size: 17px;
+    }
+    .box{
+        background:rgb(195, 237, 200);
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+</style>
+<body>
+    <header class="main-header">
+    <h2>Help & Support</h2>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="cat.html">Categories</a>
+        </nav>
+    </header>   
+    <div class="container">
+
+    <p>
+      Welcome to our Help section. If you are facing any issues while browsing or using this website, 
+      you can find quick solutions below.
+    </p>
+
+    <h3>How to Browse Products</h3>
+    <ul>
+      <li>Go to the category you want (Men, Women, Footwear, Accessories, Ethnic, Trending).</li>
+      <li>Products will load automatically from our JSON API.</li>
+      <li>Click on any product to view details (if detail page is added).</li>
+    </ul>
+
+    <h3>Images Not Loading?</h3>
+    <div class="box">
+      <p><strong>Solution:</strong> Always open the website using <strong>Live Server</strong>.</p>
+      <p>Opening directly in Chrome (file:///C:/...) will block JSON and images.</p>
+    </div>
+
+    <h3>Facing Slow Loading?</h3>
+    <ul>
+      <li>Check your internet connection.</li>
+      <li>Make sure images are inside the correct <strong></strong> folder.</li>
+      <li>Ensure file names match exactly with JSON.</li>
+    </ul>
+
+    <h3>Common Errors & Fixes</h3>
+    <ul>
+      <li><strong>CORS Error:</strong> Use Live Server.</li>
+      <li><strong>404 Image Not Found:</strong> Check image name and folder.</li>
+      <li><strong>JSON Not Loading:</strong> Check file path and spelling.</li>
+    </ul>
+
+    <h3>Need More Help?</h3>
+    <p>
+      If you need more assistance or want to report an issue, feel free to contact us through the Contact page.<br>
+      Our help line number:<b>45455-56567 / 454455-56568</b>
+    </p>
+    </div>   
+</body>
+</html>

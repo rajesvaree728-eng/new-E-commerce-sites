@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Signup</h2>
+
+<input id="email" type="text" placeholder="Enter email"><br><br>
+<input id="password" type="password" placeholder="Enter password"><br><br>
+
+<button onclick="signup()">Signup</button>
+
+<script>
+function signup() {
+  let email = document.getElementById("email").value;
+  let pass = document.getElementById("password").value;
+
+  // save info
+  localStorage.setItem("userEmail", email);
+  localStorage.setItem("userPass", pass);
+
+  alert("Signup successful!");
+}
+</script>
+
+</body>
+</html>

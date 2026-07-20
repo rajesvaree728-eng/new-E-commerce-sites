@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart</title>
+</head>
+<body>
+  <h2>Shopping Cart 🛒</h2>
+    <aside class="cart-panel">
+        <h2>Your Cart (<span id="cart-count">0</span>)</h2>
+        <ul id="cart-items-list">
+            <!-- JavaScript will int items with thumbnails here -->
+        </ul>
+        <div class="cart-total">
+            <strong>Total: ₹<span id="cart-total-price">0.00</span></strong>
+        </div>
+        <button id="clear-cart-btn">Clear Cart</button>
+        <button id="checkout-btn">Continue to Payment</button>
+
+    </aside>
+
+</body>
+</html>
+<style>
+    .cart-panel {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    flex: 1;
+    min-width: 300px;
+    align-self: flex-start;
+}
+
+/* Cart Item Rows with Thumbnails */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.cart-thumb {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.cart-item-details {
+    flex: 1;
+    font-size: 14px;
+}
+
+#clear-cart-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    margin-top: 15px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#checkout-btn {
+  background: green;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+</style>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("live_cart_with_img")) || [];
+
+const cartList = document.getElementById("cart-items-list");
+const cartCount = document.getElementById("cart-count");
+const cartTotalPrice = document.getElementById("cart-total-price");
+const clearCartBtn = document.getElementById("clear-cart-btn");
+
+function renderCart() {
+    cartList.innerHTML = "";
+    let totalItems = 0;
+    let totalPrice = 0;
+
+    cart.forEach(item => {
+        totalItems += item.quantity;
+        totalPrice += item.price * item.quantity;
+
+        const li = document.createElement("li");
+        li.classList.add("cart-item");
+
+        li.innerHTML = `
+            <img src="${item.img}" class="cart-thumb">
+            <div class="cart-item-details">
+                <strong>${item.name}</strong><br>
+                <span>${item.quantity} × ₹${item.price}</span>
+            </div>
+            <button class="remove-btn" data-id="₹{item.id}">❌</button>
+        `;
+
+        cartList.appendChild(li);
+    });
+
+    cartCount.textContent = totalItems;
+    cartTotalPrice.textContent = totalPrice.toFixed(2);
+}
+
+// Remove ONE item
+cartList.addEventListener("click", (event) => {
+    if (event.target.classList.contains("remove-btn")) {
+        const id = event.target.dataset.id;
+
+        cart = cart.filter(item => item.id !== id);
+
+        localStorage.setItem("live_cart_with_img", JSON.stringify(cart));
+        renderCart();
+    }
+});
+
+// Clear ALL items
+clearCartBtn.addEventListener("click", () => {
+    cart = [];
+    localStorage.removeItem("live_cart_with_img");  // FIXED
+    renderCart();
+});
+document.getElementById("checkout-btn").addEventListener("click", () => {
+    window.location.href = "payment.html";
+});
+
+// First load
+renderCart();
+</script>
